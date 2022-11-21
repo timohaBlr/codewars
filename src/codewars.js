@@ -1,38 +1,20 @@
-function triangle(row) {
-    if (row.length === 1) return row;
-      for (let i = 0; i < row.length - 1; i++) {
-        let supposed = row.slice(i, i + 2)
-        let letter = '';
-        switch (supposed) {
-            case 'RB':
-            case 'BR':
-                letter = 'G';
-                break;
-            case 'RG':
-            case 'GR':
-                letter = 'B';
-                break;
-            case 'BG':
-            case 'GB':
-                letter = 'R';
-                break;
-            case 'BB':
-                letter = 'B';
-                break;
-            case 'RR':
-                letter = 'R';
-                break;
-            case 'GG':
-                letter = 'G';
-                break;
-        }
-        row = '';
-        row += letter;
-       // console.log(row)
+function findOdd(A) {
+    A.sort((a, b) => a - b);
+    let i = 0;
+       if (A[i] === A[i + 1]) {
+        A.shift()
+        A.shift()
+           findOdd(A)
+    }  let y = A.length;
+       if (A[y-2]===A[y-1]) {
+        A.pop();
+        A.pop();
+           findOdd(A)
     }
-    triangle(row)
-    return row;
+        return +A.join('');
+
+
+
 }
 
-triangle('RBRGBRBGGRRRBGBBBGG');
-console.log(triangle('RGBG'))
+console.log(findOdd([ 5, 4, 3, 2, 1, 5, 4, 3, 2, 10, 10 ]));
