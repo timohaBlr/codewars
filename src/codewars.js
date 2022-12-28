@@ -1,25 +1,23 @@
-function bouncingBall(h,  bounce,  window) {
-    if (h<=0 || 0 >= bounce || bounce >= 1 || window >= h ) {
-        return -1;
-    } else if ( h * bounce < window) {
-        return 1;
-    } else {
-        let result = 0;
-        while (h *bounce > window) {
-            result += 2;
-            h = h* bounce
-        }
-        return result+1
-    }
+export function solution(number) {
+    let sum = 0;
+    for (let i = 1; i < number; i++) {
+       if (!(i%3)) {
+           sum+=i
 
+       } else if (!(i%5)) {
+           sum+=i;
+       }
+    }
+    return sum
 }
 
-console.log(bouncingBall(30.0, 0.66, 1.5))
 
-//Float parameter "h" in meters must be greater than 0
-//Float parameter "bounce" must be greater than 0 and less than 1
-//Float parameter "window" must be less than h.
-//- h = 3, bounce = 0.66, window = 1.5, result is 3
+/** Если мы перечислим все натуральные числа меньше 10, которые кратны 3 или 5,
+ * то получим 3, 5, 6 и 9. Сумма этих кратных чисел равна 23.
+ * Доработайте решение так, чтобы оно возвращало сумму всех кратных 3 или 5 чисел ниже
+ * переданного числа. Кроме того, если число отрицательное, верните 0 (для языков,
+ * в которых они есть).
+ * Примечание: Если число кратно и 3, и 5, считайте его только один раз.
+ */
 
-//- h = 3, bounce = 1, window = 1.5, result is -1
-//(Condition 2) not fulfilled)
+
