@@ -31,24 +31,18 @@
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
 <script>
-    function moveZeros(arr) {
-        let countZero = 0;
-        let newArr = arr.reduce((acc, item, index) => {
-            if (item !== 0) {
-                return [...acc, item]
-            } else {
-                countZero += 1;
-                return acc
-            }
-        }, [])
-        while (countZero > 0) {
-            countZero--
-            newArr.push(0)
-        }
-        return newArr
+    function pigIt(str) {
+        return str.split(' ')
+            .map(m => (m !== '?' && m !== ',' && m !== '.' && m !== '!')
+                ? m.slice(1) + m.slice(0, 1) + 'ay'
+                : m
+            )
+            .join(' ')
     }
 
-    console.log(moveZeros([1, 2, 0, 1, 0, 1, 0, 3, 0, 1]))
+
+    console.log(pigIt('Pig latin is cool')) //igPay atinlay siay oolcay
+    console.log(pigIt('Hello ? world !')) //elloHay orldway !
 </script>
 <!--
   This HTML file is a template.

@@ -1,19 +1,13 @@
-function moveZeros(arr) {
-    let countZero = 0;
-    let newArr = arr.reduce((acc, item, index) => {
-        if (item !== 0) {
-            return [...acc, item]
-        } else {
-            countZero += 1;
-            return acc
-        }
-    }, [])
-    while (countZero > 0) {
-        countZero--
-        newArr.push(0)
-    }
-    return newArr
+function pigIt(str) {
+    return str.split(' ')
+        .map(m => (m !== '?' && m !== ',' && m !== '.' && m !== '!')
+            ? m.slice(1) + m.slice(0, 1) + 'ay'
+            : m
+        )
+        .join(' ')
 }
-// Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
 
-// moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
+console.log(pigIt('Pig latin is cool')) //igPay atinlay siay oolcay
+console.log(pigIt('Hello world !')) //elloHay orldway !
+// Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+
