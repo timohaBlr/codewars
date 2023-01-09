@@ -1,30 +1,19 @@
-export function solution(str) {
-    let arr = str.split('')
-    if (arr.length % 2) {
-        arr.push('_')
+function moveZeros(arr) {
+    let countZero = 0;
+    let newArr = arr.reduce((acc, item, index) => {
+        if (item !== 0) {
+            return [...acc, item]
+        } else {
+            countZero += 1;
+            return acc
+        }
+    }, [])
+    while (countZero > 0) {
+        countZero--
+        newArr.push(0)
     }
-    let newArr=[];
-    let lastArr = []
-   for (let i = 0; i< arr.length; i++){
-       if (!(i%2)) {
-           newArr.push(arr[i])
-           newArr.push(arr[i+1])
-           lastArr.push(newArr.join(''))
-           newArr = []
-       }
-   }
-    return lastArr
+    return newArr
 }
+// Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
 
-
-/** Доработайте решение так, чтобы оно разбивало строку на пары из двух символов.
- * Если строка содержит нечетное количество символов, то замените недостающий второй символ последней пары
- * знаком подчеркивания ('_').
-
- Examples:
-
- * 'abc' =>  ['ab', 'c_']
- * 'abcdef' => ['ab', 'cd', 'ef']
- */
-
-
+// moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
