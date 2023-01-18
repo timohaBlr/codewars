@@ -27,22 +27,35 @@
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
 <script>
-    function validParentheses(parens) {
-        if (parens.length === 0) return true
-        else if (parens.includes('()')) {
-            return validParentheses(parens.replace('()', ''))
-        } else return false
-        /* let arr = parens.split('')
-         return arr.reduce((acc, item, index)=> {
-             if (item === '(' && arr[index] === ')') {
-
-             }
-         }, [])
-         return arr;*/
+    function humanReadable(time) {
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+        if (time >= 3600) {
+            hours = Math.floor(time / 3600)
+            if (hours < 10) {
+                hours = `0${hours}`
+            }
+            time = time % 3600;
+        } else hours = '00'
+        if (time >= 60) {
+            minutes = Math.floor(time / 60)
+            if (minutes < 10) {
+                minutes = `0${minutes}`
+            }
+        } else minutes = '00'
+        seconds = time%60;
+        if (seconds < 10) {
+            seconds = `0${seconds}`
+        } else if ( seconds ===0)  seconds= '00'
+        return `${hours}:${minutes}:${seconds}`;
     }
 
-    console.log(validParentheses("(())((()())())"))
+    console.log(humanReadable(45296))
+    console.log(humanReadable(0))
+    console.log(humanReadable(60))
 </script>
+12:34:56
 <!--
   This HTML file is a template.
   If you open it directly in the browser, you will see an empty page.
