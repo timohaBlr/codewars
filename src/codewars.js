@@ -1,17 +1,13 @@
-function validParentheses(parens) {
-let arr = parens.split(',')
-    return arr;
+let snail = function (array) {
+    let answer = []
+    let length = array.length
+    for (let i = 0; i < length; i++) {
+        answer= [...answer, ...array[0]]
+        array.shift();
+        for (let j = 0; j < array.length; j++) {
+            answer.push(array[j].pop())
+        }
+        array = array.map(m => m.reverse()).reverse();
+    }
+    return answer
 }
-
-console.log('sdas')
-console.log(validParentheses( "(" )) //false
-// Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
-//
-// Examples
-// "()"              =>  true
-// ")(()))"          =>  false
-// "("               =>  false
-// "(())((()())())"  =>  true
-// Constraints
-// 0 <= input.length <= 100
-
