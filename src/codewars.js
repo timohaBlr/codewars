@@ -1,13 +1,15 @@
-let snail = function (array) {
-    let answer = []
-    let length = array.length
-    for (let i = 0; i < length; i++) {
-        answer= [...answer, ...array[0]]
-        array.shift();
-        for (let j = 0; j < array.length; j++) {
-            answer.push(array[j].pop())
+function solution(input, markers) {
+    let array = input.split('\n')
+    let markerCheck = (array) => {
+        for (let i = 0; i < markers.length; i++) {
+            if (array.indexOf(markers[i]) !== -1) {
+                return array.indexOf(markers[i])
+            }
         }
-        array = array.map(m => m.reverse()).reverse();
+        return false
     }
-    return answer
-}
+    return array.map(m => {
+        let index = markerCheck(m)
+        return index ? m.slice(0, index).trim() : m.trim()
+    }).join('\n')
+};
